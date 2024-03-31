@@ -79,7 +79,7 @@ function mostrarGastos() {//Mostrar los datos
    let html = ""
    const gastosSection = document.querySelector("#lista-gastos-section")
    let totalGastado = gastos.reduce((total, {costo}) => {
-      return total + parseInt(costo)
+      return total + parseFloat(costo)
    }, 0)
 
    document.querySelector("#total-gastado").textContent = totalGastado
