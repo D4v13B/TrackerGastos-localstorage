@@ -1,0 +1,1 @@
+Esto es un pequeño proyecto para tracker de gastos en 1 dia
