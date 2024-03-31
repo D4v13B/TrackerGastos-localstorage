@@ -12,7 +12,15 @@
 
 <body style="background-color: #D6CBC1;">
    <div class="container m-auto mt-3">
+      <!-- Actualizar el ahorro -->
       <h1 class="text-center mb-3">EN QUE GASTASTE TU MONEY?💰</h1>
+      <h4 class="text-center mb-3">Total ahorrado <span id="total-ahorrado"></span>$</h4>
+      <form class="col-12 col-md-6 m-auto d-flex" id="form-ahorro">
+         <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Ahorro" id="ahorro">
+            <button class="btn btn-primary" type="submit" id="button-addon2">Ahorrar</button>
+          </div>
+      </form>
       <form class="col-12 col-md-6 m-auto" id="formulario">
          <div id="section-gastos" class="d-flex justify-content-between bg-dark text-white p-3 rounded flex-wrap"></div>
          <div class="d-flex justify-content-between flex-wrap">

@@ -1,9 +1,12 @@
-const tiposGastos = ["💊Medicinas", "🎓Estudios", "🥂Fiesta", "🍔Comida", "📱Servicios"]
+const tiposGastos = ["💊Medicinas", "🎓Estudios", "🥂Fiesta", "🍔Comida", "📱Servicios", "🛺Transporte"]
 
 const formulario = document.querySelector("#formulario")
+const formularioAhorro = document.querySelector("#form-ahorro")
 const sectionGastos = formulario.querySelector("#section-gastos")
+const spanAhorrado = document.querySelector("#total-ahorrado")
 let gastos = []
 let totalGastado = 0
+let ahorro = 0
 
 // Clase
 function Gasto(titulo, tipo, costo, id) {
@@ -16,6 +19,7 @@ function Gasto(titulo, tipo, costo, id) {
 document.addEventListener("DOMContentLoaded", function () {
 
    gastos = JSON.parse(localStorage.getItem("gastos")) || []
+   ahorro = JSON.parse(localStorage.getItem("ahorro")) || 0
 
    tiposGastos.forEach(e => {
       const titulo = e.substring(2)
@@ -37,6 +41,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function eventListener() {
    formulario.addEventListener("submit", registrarGasto)
+   formularioAhorro.addEventListener("submit", registrarAhorro)
+}
+
+function registrarAhorro(e){
+   e.preventDefault()
+
+   ahorro = formularioAhorro.querySelector("#ahorro").value
+   localStorage.setItem("ahorro", ahorro)
+
+   formularioAhorro.reset()
+   actualizarStorage()
+   mostrarGastos()
 }
 
 function registrarGasto(e) {
@@ -54,7 +70,11 @@ function registrarGasto(e) {
    mostrarGastos()
 }
 
-function mostrarGastos() {
+function mostrarGastos() {//Mostrar los datos
+
+   // Mostrar el total ahorrado
+   spanAhorrado.textContent = ahorro
+
    let total = 0
    let html = ""
    const gastosSection = document.querySelector("#lista-gastos-section")
@@ -82,6 +102,8 @@ function mostrarGastos() {
          case "Estudios":
             emogie = "🎓"
             break
+         case "Transporte":
+            emogie = "🛺"
          default:
             break;
       }
@@ -103,6 +125,7 @@ function mostrarGastos() {
 
 function actualizarStorage() {
    localStorage.setItem("gastos", JSON.stringify(gastos))
+   localStorage.setItem("ahorro", ahorro)
 }
 
 function eliminarGasto(id){
