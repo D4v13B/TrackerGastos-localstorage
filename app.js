@@ -1,4 +1,4 @@
-const tiposGastos = ["💊Medicinas", "🎓Estudios", "🥂Fiesta", "🍔Comida", "📱Servicios", "🛺Transporte"]
+const tiposGastos = ["💊Medicinas", "🎓Estudios", "🥂Fiesta", "🍔Comida", "📱Servicios", "🛺Transporte", "👚Privilegios"]
 
 const formulario = document.querySelector("#formulario")
 const formularioAhorro = document.querySelector("#form-ahorro")
@@ -104,6 +104,8 @@ function mostrarGastos() {//Mostrar los datos
             break
          case "Transporte":
             emogie = "🛺"
+         case "Privilegios":
+            emogie = "👚"
          default:
             break;
       }
